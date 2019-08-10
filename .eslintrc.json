@@ -1,0 +1,24 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "prettier",
+    "prettier/standard"
+  ],
+  "plugins": ["prettier", "standard"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "eqeqeq": ["error", "always"],
+    "space-before-function-paren": 0,
+    "generator-star-spacing": 0,
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2
+  }
+}

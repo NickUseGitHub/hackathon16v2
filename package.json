@@ -1,0 +1,14 @@
+{
+  "name": "hackathon16v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chaiwat Tungtongsoontorn <nickt.tnick@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "graphql-yoga": "^1.18.1"
+  }
+}

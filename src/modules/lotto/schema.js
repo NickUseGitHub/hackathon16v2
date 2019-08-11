@@ -5,14 +5,13 @@ input checkLottoInput {
 
 type Query {
   checkLotto(
-    lottoInput: checkLottoInput
+    lottoInput: checkLottoInput!
   ): CheckedLottoPrize
 
   recentLotto : Lotto
 }
 
 type CheckedLottoPrize {
-  id: String!
   title: String
   type: String
   prize: LottoPrizeGroup

@@ -17,8 +17,8 @@ const resolvers = {
         method: 'post',
         url: 'http://localhost/',
         data: {
-          query: "{ ping }"
-        }
+          query: '{ ping }',
+        },
       })
 
       const retMsg = get(result, 'data.data.ping')
@@ -29,6 +29,9 @@ const resolvers = {
 }
 
 const server = new GraphQLServer({ typeDefs, resolvers })
-server.start({
-  port
-}, () => console.log(`Server is running on localhost:${port}`))
+server.start(
+  {
+    port,
+  },
+  () => console.log(`Server is running on localhost:${port}`),
+)

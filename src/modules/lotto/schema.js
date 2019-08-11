@@ -1,6 +1,21 @@
 export default `
+input checkLottoInput {
+  number: ID!
+}
+
 type Query {
+  checkLotto(
+    lottoInput: checkLottoInput
+  ): CheckedLottoPrize
+
   recentLotto : Lotto
+}
+
+type CheckedLottoPrize {
+  id: String!
+  title: String
+  type: String
+  prize: LottoPrizeGroup
 }
 
 type LottoAnnounceDate {

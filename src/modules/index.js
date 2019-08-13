@@ -7,4 +7,17 @@ const typeMergedDefs = mergeTypes(typesArray)
 
 const resolvers = fileLoader(path.join(__dirname, './**/resolvers.js'))
 
-export default new GraphQLServer({ typeDefs: typeMergedDefs, resolvers })
+const middlewares = [
+  function logger(resolve, parent, args, ctx, info) {
+    console.log('ctx', ctx.req.request.body)
+
+    return resolve(parent, args, ctx, info)
+  },
+]
+
+export default new GraphQLServer({
+  typeDefs: typeMergedDefs,
+  resolvers,
+  context: req => ({ req }),
+  middlewares,
+})

@@ -7,6 +7,7 @@ export default `
     id: ID!
     title: String
     thumbnail: String
+    body: String
     url: String
   }
 `

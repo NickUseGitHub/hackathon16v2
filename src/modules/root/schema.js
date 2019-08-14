@@ -9,4 +9,14 @@ type PageInfo {
   startCursor: String
   endCursor: String
 }
+
+enum Day {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
 `

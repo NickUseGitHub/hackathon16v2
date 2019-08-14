@@ -1,5 +1,5 @@
-import axios from 'axios'
 import get from 'lodash/get'
+import fetchGql from '@utils/fetchGql'
 
 const queryHighlight = `
 query getHomeHilightEntries($channels: [EntryChannel]!,$types: [EntryType], $categoryIds: [EntryCategoryIDsFilter],$orderBy: EntryOrder, $after: String, $first: Int) {
@@ -73,27 +73,23 @@ function mapNodeToEntry(item) {
 export default {
   Query: {
     async highlightEntries() {
-      const response = await axios({
-        method: 'post',
-        url: 'http://localhost/',
-        data: {
-          query: queryHighlight,
-          variables: {
-            channels: ['firstpage'],
-            types: ['content'],
-            categoryIds: [
-              {
-                channel: 'firstpage',
-                ids: [794],
-              },
-            ],
-            orderBy: {
-              field: 'STICKY',
-              direction: 'DESC',
+      const response = await fetchGql({
+        query: queryHighlight,
+        variables: {
+          channels: ['firstpage'],
+          types: ['content'],
+          categoryIds: [
+            {
+              channel: 'firstpage',
+              ids: [794],
             },
-            after: null,
-            first: 15,
+          ],
+          orderBy: {
+            field: 'STICKY',
+            direction: 'DESC',
           },
+          after: null,
+          first: 15,
         },
       })
 

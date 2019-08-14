@@ -1,12 +1,9 @@
 import get from 'lodash/get'
-import axios from 'axios'
+import fetchGql from '@utils/fetchGql'
 
 export default async function recentLotto() {
-  const result = await axios({
-    method: 'post',
-    url: 'http://localhost/',
-    data: {
-      query: `
+  const result = await fetchGql({
+    query: `
       {
         recentLotto {
           id
@@ -57,7 +54,6 @@ export default async function recentLotto() {
         results
       }
       `,
-    },
   })
 
   return get(result, 'data.data.recentLotto')

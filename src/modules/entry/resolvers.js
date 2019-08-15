@@ -74,6 +74,10 @@ function mapNodeToEntry(item) {
   }
 }
 
+function validateEntry(entry) {
+  return entry.title && entry.thumbnail && entry.url
+}
+
 export default {
   Query: {
     async highlightEntries() {
@@ -99,7 +103,7 @@ export default {
 
       const items = get(response, 'data.data.entries.edges') || []
 
-      return items.map(mapNodeToEntry)
+      return items.map(mapNodeToEntry).filter(validateEntry)
     },
   },
 }

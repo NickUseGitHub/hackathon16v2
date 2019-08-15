@@ -17,22 +17,33 @@ query checkHoroFromName (
 }
 `
 
-export default async function checkHoroFromName(_, { name, lastname }) {
+function getResultOnlyName(body) {
+  if (!body) return body
+
+  return getCleanBody(
+    body
+      .split('</p>')
+      .slice(0, 3)
+      .join(''),
+  )
+}
+
+export default async function checkHoroFromName(_, { name }) {
   const response = await fetchGql({
     query,
     variables: {
       name,
-      lastname,
+      lastname: name,
     },
   })
 
   const data = get(response, 'data.data.myHoroFromNameLastname')
   if (!data) return null
   const title = get(data, 'title')
-  const body = get(data, 'body')
+  const body = getResultOnlyName(get(data, 'body'))
 
   return {
     title,
-    body: getCleanBody(body),
+    body,
   }
 }

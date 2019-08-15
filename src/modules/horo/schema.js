@@ -5,7 +5,6 @@ export default `
 
     checkHoroFromName(
       name: String!
-      lastname: String!
     ): HoroFromNameResult
 
   }

@@ -1,5 +1,6 @@
 import get from 'lodash/get'
 import fetchGql from '@utils/fetchGql'
+import getCleanBody from '@utils/getCleanBody'
 
 const queryHighlight = `
 query getHomeHilightEntries($channels: [EntryChannel]!,$types: [EntryType], $categoryIds: [EntryCategoryIDsFilter],$orderBy: EntryOrder, $after: String, $first: Int) {
@@ -21,6 +22,7 @@ query getHomeHilightEntries($channels: [EntryChannel]!,$types: [EntryType], $cat
  
 fragment entryListFields on EntryInterface {
   id
+  body
   title
   type
   thumbnail
@@ -57,6 +59,7 @@ function mapNodeToEntry(item) {
   const id = get(item, 'node.id')
   const title = get(item, 'node.title')
   const thumbnail = get(item, 'node.thumbnail')
+  const body = getCleanBody(get(item, 'node.body[0]'))
   const redirectInternal = get(item, 'node.redirectInternal')
   const channel = get(redirectInternal, 'params.channel')
   const realId = get(redirectInternal, 'params.id')
@@ -64,6 +67,7 @@ function mapNodeToEntry(item) {
 
   return {
     id,
+    body,
     title,
     thumbnail,
     url,

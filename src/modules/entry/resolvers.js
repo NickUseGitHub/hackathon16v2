@@ -60,10 +60,9 @@ function mapNodeToEntry(item) {
   const title = get(item, 'node.title')
   const thumbnail = get(item, 'node.thumbnail')
   const body = getCleanBody(get(item, 'node.body[0]'))
-  const redirectInternal = get(item, 'node.redirectInternal')
-  const channel = get(redirectInternal, 'params.channel')
-  const realId = get(redirectInternal, 'params.id')
-  const url = `https://www.sanook.com/${channel}/${realId}/`
+  const channelOrign = get(item, 'node.channel')
+  const channel = get(channelOrign, 'slug')
+  const url = channel && id ? `https://www.sanook.com/${channel}/${id}/` : ''
 
   return {
     id,

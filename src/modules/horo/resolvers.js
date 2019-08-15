@@ -1,6 +1,6 @@
 import get from 'lodash/get'
 import fetchGql from '@utils/fetchGql'
-import stripHtml from '@utils/stripHtml'
+import getCleanBody from '@utils/getCleanBody'
 
 function getQuery(day) {
   return `
@@ -18,13 +18,6 @@ function getQuery(day) {
     }
   }
   `
-}
-
-function getCleanBody(body) {
-  if (!body) return body
-  return stripHtml(body)
-    .split('\n')
-    .join('')
 }
 
 export default {

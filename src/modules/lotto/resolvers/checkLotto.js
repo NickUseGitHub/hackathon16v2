@@ -51,9 +51,12 @@ export default async function checkLotto(_, { lottoInput }) {
     null,
   )
 
-  if (!checkedPrizeKey) return null
-
   const title = get(result, 'dateLotto') || 'ตรวจสลากกินแบ่ง'
+  if (!checkedPrizeKey)
+    return {
+      title,
+    }
+
   const winningPrize = prizeResult[checkedPrizeKey]
 
   return {

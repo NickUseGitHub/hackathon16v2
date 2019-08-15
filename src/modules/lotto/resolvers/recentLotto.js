@@ -8,6 +8,9 @@ export default async function recentLotto() {
         recentLotto {
           id
           title
+
+          dateLotto: issueDateOnHuman (autoRelative: false, format: "D MMMM YYYY", locale: "th")
+
           prizeResult {
             prize1 {
               ...lottoResult

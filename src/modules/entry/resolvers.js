@@ -80,12 +80,12 @@ export default {
           types: ['content'],
           categoryIds: [
             {
-              channel: 'firstpage',
-              ids: [794],
+              channel: 'news',
+              ids: [1421, 6213, 6218, 6438],
             },
           ],
           orderBy: {
-            field: 'STICKY',
+            field: 'CREATED_AT',
             direction: 'DESC',
           },
           after: null,

@@ -28,8 +28,11 @@ export default async function checkHoroFromDay(_, { day }) {
   const data = get(response, `data.data.horoscopeDaily.${dayForQuery}.entry`)
   if (!data) return null
 
+  const title = (get(data, 'title') || '').replace('ดู', '')
+
   return {
     ...data,
+    title,
     body: getCleanBody(get(data, 'body[0]')),
   }
 }

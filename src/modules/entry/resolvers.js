@@ -76,7 +76,7 @@ export default {
       const response = await fetchGql({
         query: queryHighlight,
         variables: {
-          channels: ['firstpage'],
+          channels: ['news'],
           types: ['content'],
           categoryIds: [
             {

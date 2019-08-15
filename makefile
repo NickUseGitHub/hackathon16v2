@@ -4,4 +4,4 @@ dev:
 	yarn dev
 
 expose:
-	./ngrok http 3000
+	./ngrok http 3002

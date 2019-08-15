@@ -1,6 +1,6 @@
 import graphQlModules from './modules'
 
-const port = 3000
+const port = 3002
 
 const server = graphQlModules
 server.start(

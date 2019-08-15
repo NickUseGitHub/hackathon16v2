@@ -1,5 +1,6 @@
 import get from 'lodash/get'
 import fetchGql from '@utils/fetchGql'
+import stripHtml from '@utils/stripHtml'
 
 function getQuery(day) {
   return `
@@ -19,6 +20,13 @@ function getQuery(day) {
   `
 }
 
+function getCleanBody(body) {
+  if (!body) return body
+  return stripHtml(body)
+    .split('\n')
+    .join('')
+}
+
 export default {
   Query: {
     async checkHoroFromDay(_, { day }) {
@@ -34,7 +42,7 @@ export default {
 
       return {
         ...data,
-        body: get(data, 'body[0]'),
+        body: getCleanBody(get(data, 'body[0]')),
       }
     },
   },
